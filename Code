@@ -1,0 +1,44 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+
+# Let's pretend we have data for different categories, monthly sales in 2016, and profit distribution by region.
+
+# Simulated data
+np.random.seed(42)  # For reproducibility
+categories = ['Furniture', 'Office Supplies', 'Technology']
+sales_by_category = np.random.randint(10000, 50000, size=len(categories))
+
+months = pd.date_range('2016-01-01', periods=12, freq='M')
+sales_trend = np.random.randint(20000, 50000, size=len(months))
+
+regions = ['Central', 'East', 'South', 'West']
+profit_distribution = [np.random.normal(loc=0, scale=1000, size=50) for _ in regions]
+
+# Bar chart: Sales by Category
+plt.figure(figsize=(10, 6))
+plt.bar(categories, sales_by_category, color=['blue', 'orange', 'green'])
+plt.title('Sales by Category')
+plt.xlabel('Category')
+plt.ylabel('Sales')
+plt.tight_layout()
+plt.show()
+
+# Line graph: Sales Trend Over Time
+plt.figure(figsize=(10, 6))
+plt.plot(months, sales_trend, marker='o', linestyle='-', color='purple')
+plt.title('Monthly Sales Trend in 2016')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+plt.xticks(months, rotation=45)
+plt.tight_layout()
+plt.show()
+
+# Box plot: Profit Distribution by Region
+plt.figure(figsize=(10, 6))
+plt.boxplot(profit_distribution, labels=regions)
+plt.title('Profit Distribution by Region')
+plt.xlabel('Region')
+plt.ylabel('Profit')
+plt.tight_layout()
+plt.show()
